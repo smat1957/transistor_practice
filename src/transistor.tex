@@ -2001,9 +2001,11 @@ $R_B$の値を表\ref{table:type}の通りの調整範囲に含める様な半�
                \label{fig:ex0}
 \end{figure}
 
-実習装置で使っているトランジスタの外観、表示を記録して、
-そのトランジスタについて調べる。同時に3つの端子それぞれの名称も調べる。
+実習装置で使っているトランジスタの外観、及び名盤の表記をスケッチし、
+トランジスタの図記号、端子の名称、各端子を流れる電流の呼称と表記、
+端子間電圧の呼称と表記について調べて記録する。\\
 
+\begin{comment}
 \begingroup
 \renewcommand{\arraystretch}{1.4}
 \begin{table}[H]
@@ -2022,6 +2024,15 @@ $R_B$の値を表\ref{table:type}の通りの調整範囲に含める様な半�
   \end{center}
 \end{table}
 \endgroup
+\end{comment}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[keepaspectratio, scale=0.6, angle=0]
+	{figs/eps/illust.eps}
+	%\caption{}
+	\label{fig:illust}
+\end{figure}
 
 \newpage
 
@@ -2090,7 +2101,8 @@ $V_{CE}-I_C$特性は出力特性とも呼ばれ、
 
 \begin{enumerate}
 \item[(1)] $V_{CE}\;-\;I_C$特性のグラフより、$V_{CE}=5$V、$I_B=40\mu$A の時の$I_C$の値を読み取る\\
-\item[(2)] この時の直流電流増幅率$h_{FE}=I_C/I_B$を求める
+\item[(2)] この時の直流電流増幅率$h_{FE}=I_C/I_B$を求める\\
+\item[(3)] このグラフから分かること（出力特性、$V_{CE}-I_C$特性）についてまとめる
 \end{enumerate}
 
 \newpage
@@ -2157,7 +2169,8 @@ $I_B\;-\;I_C$特性は、コレクタ-エミッタ間の電圧$V_{CE}$を一定�
 \item[(1)] $I_B\;-\;I_C$特性のグラフより、$I_B=40\mu$A の時の$I_C$の値を読み取る\\
 \item[(2)] この時の直流電流増幅率$h_{FE}=I_C/I_B$を求める\\
 \item[(3)] $I_B=40\mu$A、$V_{CE}=5$V の点から、$I_B$を＋方向に$20\mu$A だけ変化させた時の$I_C$の値をグラフから読み取る\\
-\item[(4)] この時読み取った$I_C$の変化量から、この時の電流増幅率$h_{fe}=\Delta I_C/\Delta I_B$を求める
+\item[(4)] この時読み取った$I_C$の変化量から、この時の電流増幅率$h_{fe}=\Delta I_C/\Delta I_B$を求める\\
+\item[(5)] このグラフから分かること（$I_B-I_C$特性）についてまとめる
 \end{enumerate}
 
 \newpage
@@ -2216,6 +2229,12 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
                \label{fig:iocharM1Yd}
 \end{figure}
 
+【結果の検討】
+
+\begin{enumerate}
+	\item[(1)] このグラフから分かること（入力特性、$V_{BE}-I_B$特性）についてまとめる
+\end{enumerate}
+
 \newpage
 
 \subsection{直流負荷線（$E_C=9V,\;R_C=390\Omega$）：第1象限グラフ}
@@ -2223,19 +2242,20 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 直流負荷線は、トランジスタのコレクタに負荷抵抗$R_C$が接続されている時の、
 コレクタ-エミッタ間の電圧$V_{CE}$とコレクタ電流$I_C$の関係を示している
 
-コレクタ電流$I_C$の増加に伴い、コレクタ-エミッタ間の電圧$V_{CE}$は低下する\\
+%コレクタ電流$I_C$の増加に伴い、コレクタ-エミッタ間の電圧$V_{CE}$は低下する\\
 
-実験の手順は次の通り
+負荷抵抗$R_C=390\Omega$を通したコレクタ電流$I_C$を測定できる様に接続を変更し、
+その後の実験手順は次の通り行う
 
 \begin{enumerate}
-\item[(1)] 負荷抵抗$R_C=390\Omega$を通したコレクタ電流$I_C$を測定できる様に接続を変更する
-\item[(2)] ベース電流$I_B=0\;\mu$A になる様に$E_B$を調整し、その状態でコレクタ-エミッタ間の電圧$V_{CE}=9$V となる様に$E_C$を調整する（これ以降$E_C$には触らない）
+\item[(1)] ベース電流$I_B=0\;\mu$A になる様に$E_B$を調整する
+\item[(2)] その状態でコレクタ-エミッタ間の電圧$V_{CE}=9$V となる様に$E_C$を調整する（これ以降$E_C$には触らない）
 \item[(3)] コレクタ-エミッタ間の電圧$V_{CE}$を観察しながら、$E_B$（必要に応じて可変抵抗器）を調整して$V_{CE}$を変化させ、その都度コレクタ電流$I_C$測定し記録する  
 \end{enumerate}
 
 %測定を終えたら、第1象限に直流負荷線を作図する
 
-\vfill
+%\vfill
 
 \begin{figure}[H]
   \centering
@@ -2245,7 +2265,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
                \label{fig:ex3}
 \end{figure}
 
-\vfill
+%\vfill
 
 \begingroup
 \renewcommand{\arraystretch}{1.6}
@@ -2260,17 +2280,14 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \end{table}
 \endgroup
 
-\vfill
-
-直流負荷線のグラフは、第1象限の出力特性グラフに重ねて作図する。
-
-\vfill
+直流負荷線のグラフは、第1象限の出力特性グラフに重ねて作図する。\\
 
 【結果の検討】
 
 \begin{enumerate}
 \item[(1)] 直流負荷線を2等分する点の$V_{CE}$と$I_C$をグラフから読み取る\\
-\item[(2)] 読み取った点の印をグラフ上に書き込む
+\item[(2)] 読み取った点の印をグラフ上に書き込む\\
+\item[(3)] このグラフから分かること（直流負荷線、$V_{CE}-I_C$特性）についてまとめる
 \end{enumerate}
 
 \vfill
@@ -2278,8 +2295,8 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 
 \begin{figure}[H]
   \centering
-   \includegraphics[keepaspectratio, scale=0.65, angle=90]
-               {figs/png//staticExample.png}
+   \includegraphics[keepaspectratio, scale=0.7, angle=90]
+               {figs/eps//statictate.eps}
                \caption{作図例：トランジスタの静特性（2SC1815Y）}
                \label{fig:staticexample}
 \end{figure}
@@ -2396,9 +2413,19 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \item[(6)] 設計時の条件や目標値と、実際に測定した値とを比較する
 \end{enumerate}
 
-実習装置で使っているトランジスタの外観、表示を記録して、
-そのトランジスタについて調べる。同時に3つの端子それぞれの名称も調べる。
+実習装置で使っているトランジスタの外観、及び名盤の表記をスケッチし、
+トランジスタの図記号、端子の名称、各端子を流れる電流の呼称と表記、
+端子間電圧の呼称と表記について調べて記録する。\\
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[keepaspectratio, scale=0.6, angle=0]
+	{figs/eps/illust.eps}
+	%\caption{}
+	\label{fig:illust}
+\end{figure}
+
+\begin{comment}
 \begingroup
 \renewcommand{\arraystretch}{1.2}
 \begin{table}[H]
@@ -2417,6 +2444,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
   \end{center}
 \end{table}
 \endgroup
+\end{comment}
 
 \newpage
 
