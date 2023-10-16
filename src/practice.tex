@@ -328,12 +328,12 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 
 %コレクタ電流$I_C$の増加に伴い、コレクタ-エミッタ間の電圧$V_{CE}$は低下する\\
 
-実験の手順は次の通り
+負荷抵抗$R_C=390\Omega$を通したコレクタ電流$I_C$を測定できる様に接続を変更した後、
+次の手順で実験を進める
 
 \begin{enumerate}
-\item[(1)] 負荷抵抗$R_C=390\Omega$を通したコレクタ電流$I_C$を測定できる様に接続を変更する
-\item[(2)] ベース電流$I_B=0\;\mu$A になる様に$E_B$を調整し、その状態でコレクタ-エミッタ間の電圧$V_{CE}=9$V となる様に$E_C$を調整する（これ以降$E_C$には触らない）
-\item[(3)] コレクタ-エミッタ間の電圧$V_{CE}$を観察しながら、$E_B$（必要に応じて可変抵抗器）を調整して$V_{CE}$を変化させ、その都度コレクタ電流$I_C$測定し記録する  
+\item[(1)] ベース電流$I_B=0\;\mu$A になる様に$E_B$を調整し、その状態でコレクタ-エミッタ間の電圧$V_{CE}=9$V となる様に$E_C$を調整する（これ以降$E_C$には触らない）
+\item[(2)] コレクタ-エミッタ間の電圧$V_{CE}$を観察しながら、$E_B$（必要に応じて可変抵抗器）を調整して$V_{CE}$を表\ref{tbl:tbl9}の通り変化させ、その都度コレクタ電流$I_C$測定して記録する  
 \end{enumerate}
 
 %測定を終えたら、第1象限に直流負荷線を作図する
@@ -354,7 +354,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \renewcommand{\arraystretch}{1.6}
 \begin{table}[H]
   \begin{center}
-  \caption{2SC1815：直流負荷線：$E_{C}=9$V、$R_C=390\Omega$}%\label{tbl:t9}\vspace{2mm}
+  \caption{2SC1815：直流負荷線：$E_{C}=9$V、$R_C=390\Omega$}\label{tbl:tbl9}\vspace{2mm}
   \begin{tabular}{|r|wr{1cm}|wr{1cm}|wr{1cm}|wr{1cm}|wr{1cm}|wr{1cm}|wr{1cm}|wr{1cm}|wr{1cm}|} \hline
     \multicolumn{1}{|r|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{$V_{CE}$[V]}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{9.0}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{8.0}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{7.0}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{6.0}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{5.0}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{4.0}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{3.0}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{2.0}} & \multicolumn{1}{c|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{1.0}}\\ \hline
     \multicolumn{1}{|r|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{$I_C$[mA]}} & & & & & & & & & \\ \hline
@@ -502,7 +502,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 
 実習装置で使っているトランジスタの外観、及び名盤の表記をスケッチし、
 トランジスタの図記号、端子の名称、各端子を流れる電流の呼称と表記、
-端子間電圧の呼称と表記について調べて記録する。\\
+端子間電圧の呼称と表記について調べて記録する\\
 
 \begin{comment}
 	\begingroup
@@ -1053,6 +1053,16 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \end{spacing}
 \end{multicols}
 
-\vfill
+\newpage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[keepaspectratio, scale=0.76, angle=90]
+	{figs/eps/logscale.eps}
+	\caption{周波数特性の片対数記録用紙}
+	\label{fig:23}
+\end{figure}
+
+%\vfill
 
 \end{document}
