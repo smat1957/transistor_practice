@@ -1,6 +1,8 @@
 % latex uft-8
 \documentclass[uplatex,a4paper,11pt,oneside,openany]{jsbook}
 %
+\usepackage{plext}
+\usepackage{flushend}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage[dvipdfmx]{color}
 \usepackage{amsmath,amssymb}
@@ -16,6 +18,8 @@
 \usepackage{comment}
 \usepackage{setspace}
 \usepackage{multicol}
+\usepackage{multirow}
+
 \usepackage{listings,jlisting} %日本語のコメントアウトをする場合jlistingが必要
 %ここからソースコードの表示に関する設定
 \lstset{
@@ -1728,9 +1732,9 @@ $R_B$の値を表\ref{table:type}の通りの調整範囲に含める様な半�
   \caption{教科書の回路における実測値（回路計による）2SC1815GR }\label{tblg}
   \begin{tabular}{|c|l|wr{1.8cm}|l|} \hline
     \multicolumn{1}{|c|}{\textbf{項番}} & \multicolumn{1}{c|}{\textbf{項目}} & \multicolumn{1}{c|}{\textbf{実測値}} & \multicolumn{1}{c|}{\textbf{備考}} \\ \hline
-    1 & $R_E$ & $1.200\;k\Omega$ & エミッタ端子とGND端子の間で測定\\
+    1 & $R_E$ & $1.200\;k\Omega$ & エミッタ端子とGND端子の間で測定\footnotemark\\
     2 & $R_C$ & $5.571\;k\Omega$ & コレクタ端子と$V_{CC}$の＋端子の間で測定\\
-    3 & $R_A$ & $15.90\;k\Omega$ & ベース端子とGND端子の間で測定\footnotemark\\
+    3 & $R_A$ & $15.90\;k\Omega$ & ベース端子とGND端子の間で測定\\
     4 & $R_B$ & $87.42\;k\Omega$ & ベース端子と$V_{CC}$の＋端子の間で測定\\
     5 & $V_{CC}$ & $12.30\;V$ & DC12V \\
     6 & $h_{FE}$ & $260$ & 2SC1815-GR\\ \hline
@@ -1938,6 +1942,22 @@ $R_B$の値を表\ref{table:type}の通りの調整範囲に含める様な半�
 \subsection{表示可能フォントの確認}
 
 \lstinputlisting[caption=フォント確認,label=prog01]{python/fontsck.py}
+
+%\newpage
+
+\subsection{片対数方眼紙(5decades)}
+
+\lstinputlisting[caption=片対数方眼紙(5decades),label=prog10]{python/logscale.py}
+
+\newpage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[keepaspectratio, scale=0.76, angle=90]
+	{figs/eps/logscale.eps}
+	\caption{周波数特性の片対数記録用紙}
+	\label{fig:xx}
+\end{figure}
 
 \part{実習のための配布資料}
 
@@ -2454,10 +2474,10 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
   \caption{回路計による実測値}\label{tbl1}
   \begin{tabular}{|c|l|wr{2.2cm}|l|} \hline
     \multicolumn{1}{|c|}{\textbf{項番}} & \multicolumn{1}{c|}{\textbf{項目}} & \multicolumn{1}{c|}{\textbf{実測値}} & \multicolumn{1}{c|}{\textbf{備考（公称値など）}} \\ \hline
-    1 & $R_E$ & $\;k\Omega$ & カラーコード（　　　　　　　）、（$　　　　　　　）$$\Omega$ \\
-    2 & $R_C$ & $\;k\Omega$ & カラーコード（　　　　　　　）、（$　　　　　　　）$$\Omega$ \\
-    3 & $R_A$ & $\;k\Omega$ & カラーコード（　　　　　　　）、（$　　　　　　　）$$\Omega$ \\
-    4 & $R_B$ & $\;k\Omega$ & 半固定抵抗器の表記は（　　　）、$20\times 10^2\Omega$ \\
+    1 & $R_E$ & $\;k\Omega$ & エミッタ端子とGND端子の間で測定\footnotemark\\
+    2 & $R_C$ & $\;k\Omega$ & コレクタ端子と$V_{CC}$の＋端子の間で測定\\
+    3 & $R_A$ & $\;k\Omega$ & ベース端子とGND端子の間で測定\\
+    4 & $R_B$ & $\;k\Omega$ & ベース端子と$V_{CC}$の＋端子の間で測定\\
     5 & $V_{CC}$ & $\;V$ & 直流安定化電源装置（DC12V） \\
     6 & $h_{FE}$ & $\;$ & Trの名称は（　　　　　　　　　　）\\ \hline
     7 & $V_{RC}$ & $\;V$ & 設計時の目標は$V_{RC}\fallingdotseq V_{CE}=(V_{CC}-V_{RE})/2$だけど？\\
@@ -2469,13 +2489,14 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
   \end{tabular}
   \end{center}
 \end{table}
+\footnotetext{抵抗値の測定ではトランジスタを実習装置から取り外す}
 \endgroup
 
 \vfill
 
 \begin{figure}[H]
   \centering
-   \includegraphics[keepaspectratio, scale=0.58, angle=0]
+   \includegraphics[keepaspectratio, scale=0.56, angle=0]
                {figs/eps/p96fig3b.eps}
                \caption{実際の回路で測定した時の値}
                \label{fig:11_1}
@@ -2533,128 +2554,149 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 【入出力特性：オシロスコープ画面の情報をスケッチせよ】
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid6mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力（実効値）$V_i=6\;$mVの時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 2.0[V]& 　　　　 \\ \hline
-    波長 & 　　　　 & 200.0[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$f=1$kHz一定）$V_i=6$mV} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid10mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力（実効値）$V_i=10\;$mVの時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 2.0[V]& 　　　　 \\ \hline
-    波長 & 　　　　 & 200.0[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$f=1$kHz一定）$V_I=10$mV} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid20mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力（実効値）$V_i=20\;$mVの時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 5.0[V]& 　　　　 \\ \hline
-    波長 & 　　　　 & 200.0[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$f=1$kHz一定）$V_I=20$mV} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
+
 \newpage
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid30mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力（実効値）$V_i=30\;$mVの時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 5.0[V]& 　　　　 \\ \hline
-    波長 & 　　　　 & 200.0[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$f=1$kHz一定）$V_I=30$mV} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid40mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力（実効値）$V_i=40\;$mVの時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 5.0[V]& 　　　　 \\ \hline
-    波長 & 　　　　 & 200.0[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$f=1$kHz一定）$V_I=40$mV} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid50mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力（実効値）$V_i=50\;$mVの時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 5.0[V]& 　　　　 \\ \hline
-    波長 & 　　　　 & 200.0[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$f=1$kHz一定）$V_I=50$mV} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
@@ -2669,8 +2711,8 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \item[(2)] 入力の周波数を変えて、その都度出力電圧$V_o$を記録する（$V_i=5m$V を一定を保つ）
 \item[(3)] 電圧増幅度$A_v=V_o/V_i$、および電圧利得$G_v[dB]=20\log A_v$を計算する
 \item[(4)] 周波数特性（周波数ー電圧利得）を、周波数を対数とする片対数グラフに表す
-\item[(5)] 中域周波数での電圧利得$G_{vA}$を読み取り、そこから$3dB$低下した増幅度$G_{vA}-3$を求める
-\item[(6)] 低域遮断周波数$f_L$、高域遮断周波数$f_H$、帯域幅$B$をグラフから読み取る
+\item[(5)] 中域周波数での電圧利得$G_{vA}$を読み取り、そこから3[dB]低下した増幅度$G_{vA}-3$を求める
+\item[(6)] 低域遮断周波数$f_L$[Hz]、高域遮断周波数$f_H$[Hz]、帯域幅$B$[Hz]$=f_H-f_L$をグラフから読み取る
 \end{enumerate}
 
 %\begin{spacing}{0.67}
@@ -2710,64 +2752,75 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 【周波数特性：オシロスコープ画面の情報をスケッチせよ】
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid6mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=15Hz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 20.0[ms]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=20$Hz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid10mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=20Hz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 20.0[ms]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=30$Hz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid20mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=30Hz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 20.0[ms]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=50$Hz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
@@ -2775,64 +2828,147 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \newpage
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid30mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=50Hz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 10[ms]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=100$Hz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid40mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=70Hz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 5[ms]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=1$kHz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid50mV}
-  \end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=10$kHz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
+\end{multicols}
 
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=100Hz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 5.0[ms]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+\newpage
+
+\begin{multicols}{2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=50$kHz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+\end{multicols}
+
+\vfill
+
+\begin{multicols}{2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=70$kHz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
+\end{multicols}
+
+\vfill
+
+\begin{multicols}{2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=100$kHz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
@@ -2840,64 +2976,146 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \newpage
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid30mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=1kHz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 200[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=200$kHz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid40mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=10kHz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 20,0[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
-\end{spacing}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=300$kHz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+	
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid50mV}
-  \end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+		\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+			\multicolumn{4}{l}{CH１：入力信号（$V_i=5$mV一定） $f=400$kHz} \\ \hline
+			項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+			振幅pp &　& & \\ \hline
+			波長 & & & \\ \hline
+			\multicolumn{4}{l}{CH2：その時の出力信号} \\ \hline
+			振幅pp & & & \\ \hline
+			波長 & & & \\ \hline
+		\end{tabular}
+	\end{spacing}
+\end{multicols}
 
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=100kHz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 2.00[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
+\part{配布用作業用紙}
+
+\begin{multicols}{2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+	\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+		\multicolumn{4}{l}{CH１：} \\ \hline
+		項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+		振幅pp &　& & \\ \hline
+		波長 & & & \\ \hline
+		\multicolumn{4}{l}{CH2：} \\ \hline
+		振幅pp & & & \\ \hline
+		波長 & & & \\ \hline
+	\end{tabular}
+	\end{spacing}
+\end{multicols}
+
+\vfill
+
+\begin{multicols}{2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+	\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+		\multicolumn{4}{l}{CH１：} \\ \hline
+		項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+		振幅pp &　& & \\ \hline
+		波長 & & & \\ \hline
+		\multicolumn{4}{l}{CH2：} \\ \hline
+		振幅pp & & & \\ \hline
+		波長 & & & \\ \hline
+	\end{tabular}
 \end{spacing}
+
+\end{multicols}
+
+\vfill
+
+\begin{multicols}{2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	
+	\begin{spacing}{1.5}
+	\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+		\multicolumn{4}{l}{CH１：} \\ \hline
+		項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+		振幅pp &　& & \\ \hline
+		波長 & & & \\ \hline
+		\multicolumn{4}{l}{CH2：} \\ \hline
+		振幅pp & & & \\ \hline
+		波長 & & & \\ \hline
+	\end{tabular}
+\end{spacing}
+
 \end{multicols}
 
 \vfill
@@ -2905,69 +3123,84 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \newpage
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid30mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=400kHz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 1.00[$\mu$s]& 　　　　 \\ \hline
-  \end{tabular}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+	\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+		\multicolumn{4}{l}{CH１：} \\ \hline
+		項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+		振幅pp &　& & \\ \hline
+		波長 & & & \\ \hline
+		\multicolumn{4}{l}{CH2：} \\ \hline
+		振幅pp & & & \\ \hline
+		波長 & & & \\ \hline
+	\end{tabular}
 \end{spacing}
+
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid40mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=600kHz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 500[ns]& 　　　　 \\ \hline
-  \end{tabular}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[keepaspectratio, scale=0.28, angle=0]
+		{figs/eps/grid.eps}
+		%\caption{オシロスコープの画面スケッチ}
+		\label{fig:grid}
+	\end{figure}
+	\begin{spacing}{1.5}
+	\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+		\multicolumn{4}{l}{CH１：} \\ \hline
+		項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+		振幅pp &　& & \\ \hline
+		波長 & & & \\ \hline
+		\multicolumn{4}{l}{CH2：} \\ \hline
+		振幅pp & & & \\ \hline
+		波長 & & & \\ \hline
+	\end{tabular}
 \end{spacing}
+
 \end{multicols}
 
 \vfill
 
 \begin{multicols}{2}
-  \begin{figure}[H]
-     \centering
-      \includegraphics[keepaspectratio, scale=0.28, angle=0]
-                  {figs/eps/grid.eps}
-                  %\caption{オシロスコープの画面スケッチ}
-                  \label{fig:grid50mV}
-  \end{figure}
-
-  \begin{spacing}{1.5}
-  \begin{tabular}{|c||r|r|r|}
-    \multicolumn{4}{c}{入力周波数 $f=800kHz\;$ の時の出力} \\ \hline
-    項目 & DIVs & Value/DIV & Value \\ \hline \hline
-    振幅pp & 　　　　 & 500[mV]& 　　　　 \\ \hline
-    波長 & 　　　　 & 500[ns]& 　　　　 \\ \hline
-  \end{tabular}
+\begin{figure}[H]
+	\centering
+	\includegraphics[keepaspectratio, scale=0.28, angle=0]
+	{figs/eps/grid.eps}
+	%\caption{オシロスコープの画面スケッチ}
+	\label{fig:grid}
+\end{figure}
+	\begin{spacing}{1.5}
+	\begin{tabular}{|Wc{10mm}||Wc{10mm}|Wc{20mm}|Wc{20mm}|}
+		\multicolumn{4}{l}{CH１：} \\ \hline
+		項目 & DIV数 & 値/DIV & 値 \\ \hline \hline
+		振幅pp &　& & \\ \hline
+		波長 & & & \\ \hline
+		\multicolumn{4}{l}{CH2：} \\ \hline
+		振幅pp & & & \\ \hline
+		波長 & & & \\ \hline
+	\end{tabular}
 \end{spacing}
-\end{multicols}
 
-\vfill
+\end{multicols}
 
 \newpage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[keepaspectratio, scale=0.76, angle=90]
+	{figs/eps/logscale.eps}
+	\caption{周波数特性の片対数記録用紙}
+	\label{fig:xx}
+\end{figure}
 %
 %\section*{謝辞}
 \addcontentsline{toc}{chapter}{謝辞}
