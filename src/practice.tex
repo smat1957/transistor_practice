@@ -38,7 +38,7 @@
 \begin{itemize}
 \item 回路計
 \item トランジスタ（2SC1815-O、2SC1815-Y、2SC1815-GR）\footnote{except for BL}
-\item 直流電流計2台（mA及び$\mu$A）
+\item 直流電流計2台（mA及び$\mu$A各1台）
 \item 直流電圧計2台
 \item 直流安定化電源装置2台（$V_{CC}$用と、$V_{BB}$用）
 \end{itemize}
@@ -154,7 +154,7 @@ $V_{CE}-I_C$特性は出力特性とも呼ばれ、
   \caption{2SC1815：$V_{CE}\;-\;I_C$特性：$I_B$一定}%\label{tbl:t1}\vspace{2mm}
   \begin{tabular}{|r|wr{2.5cm}|wr{2.5cm}|wr{2.5cm}|wr{2.5cm}|} \hline
     \rowcolor[rgb]{0.9, 0.9, 0.9}
-    &\multicolumn{4}{c|}{\textbf{コレクタ電流 $I_C$[mA]　（2SC1815）}} \\ \hline
+    &\multicolumn{4}{c|}{\textbf{コレクタ電流 $I_C$[mA]　（2SC1815　     ）}} \\ \hline
     \rowcolor[rgb]{0.9, 0.9, 0.9}
     \multicolumn{1}{|r|}{\textbf{$V_{CE}$[V]}} & \multicolumn{1}{c|}{\textbf{$I_B=20\mu$A}} & \multicolumn{1}{c|}{\textbf{$I_B=40\mu$A}} & \multicolumn{1}{c|}{\textbf{$I_B=60\mu$A}} & \multicolumn{1}{c|}{\textbf{$I_B=80\mu$A}} \\ \hline
     \multicolumn{1}{|r|}{\cellcolor[rgb]{0.9, 0.9, 0.9}\textbf{0.2}} & & & & \\ \hline
@@ -177,16 +177,19 @@ $V_{CE}-I_C$特性は出力特性とも呼ばれ、
   \centering
    \includegraphics[keepaspectratio, scale=0.45, angle=0]
                {figs/png/x1static.png}
-               \caption{グラフ作成例：出力特性及び直流負荷線（2SC1815Y）}
+               \caption{グラフ作成例：出力特性及び直流負荷線（2SC1815Yの場合）}
                \label{fig:iocharM1Yd}
 \end{figure}
 
 【結果の検討】
 
 \begin{enumerate}
-\item[(1)] $V_{CE}\;-\;I_C$特性のグラフより、$V_{CE}=5$V、$I_B=40\mu$A の時の$I_C$の値を読み取る\\
-\item[(2)] この時の直流電流増幅率$h_{FE}=I_C/I_B$を求める\\
-\item[(3)] このグラフから分かること（出力特性、$V_{CE}-I_C$特性）についてまとめる
+\item[(1)] $V_{CE}\;-\;I_C$特性のグラフより、$V_{CE}=5$V、$I_B=40\mu$A の時の$I_C$の値を読み取れ\\
+\item[(2)] この時の直流電流増幅率$h_{FE}=I_C/I_B$を求めよ\\
+
+\item[(3)] このグラフから分かること（出力特性、$V_{CE}-I_C$特性）についてまとめよ
+
+	（コレクタ-エミッタ間の電圧が比較的小さい領域におけるコレクタ電流の変化、コレクタ-エミッタ間の電圧が大きい領域におけるコレクタ電流の変化、それぞれに着目した時の出力特性を言葉で表現してみよう）
 \end{enumerate}
 
 \newpage
@@ -243,18 +246,20 @@ $I_B\;-\;I_C$特性は、コレクタ-エミッタ間の電圧$V_{CE}$を一定�
   \centering
    \includegraphics[keepaspectratio, scale=0.45, angle=0]
                {figs/png/x2static.png}
-               \caption{グラフ作成例：$I_B\;-\;I_C$特性（2SC1815Y）}
+               \caption{グラフ作成例：$I_B\;-\;I_C$特性（2SC1815Yの場合）}
                \label{fig:iocharM1Yd}
 \end{figure}
 
 【結果の検討】
 
 \begin{enumerate}
-\item[(1)] $I_B\;-\;I_C$特性のグラフより、$I_B=40\mu$A の時の$I_C$の値を読み取る\\
-\item[(2)] この時の直流電流増幅率$h_{FE}=I_C/I_B$を求める\\
-\item[(3)] $I_B=40\mu$A、$V_{CE}=5$V の点から、$I_B$を＋方向に$20\mu$A だけ変化させた時の$I_C$の値をグラフから読み取る\\
-\item[(4)] この時読み取った$I_C$の変化量から、この時の電流増幅率$h_{fe}=\Delta I_C/\Delta I_B$を求める\\
-\item[(5)] このグラフから分かること（$I_B-I_C$特性）についてまとめる
+\item[(1)] $I_B\;-\;I_C$特性のグラフより、$I_B=40\mu$A の時の$I_C$の値を読み取れ\\
+\item[(2)] この時の直流電流増幅率$h_{FE}=I_C/I_B$を求めよ\\
+\item[(3)] $I_B=40\mu$A、$V_{CE}=5$V の点から、$I_B$を＋方向に$20\mu$A だけ変化させた時の$I_C$の値をグラフから読み取れ\\
+\item[(4)] この時読み取った$I_C$の変化量から、この時の電流増幅率$h_{fe}=\Delta I_C/\Delta I_B$を求めよ\\
+\item[(5)] このグラフから分かること（$I_B-I_C$特性）をまとめよ
+
+（$I_B$の増加に伴う$I_C$の変化について、どのような現象が見られるのか、言葉で表現してみよう）
 \end{enumerate}
 
 \newpage
@@ -309,14 +314,15 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
   \centering
    \includegraphics[keepaspectratio, scale=0.45, angle=0]
                {figs/png/x3static.png}
-               \caption{グラフ作成例：入力特性（2SC1815Y）}
+               \caption{グラフ作成例：入力特性（2SC1815Yの場合）}
                \label{fig:iocharM1Yd}
 \end{figure}
 
 【結果の検討】
 
 \begin{enumerate}
-	\item[(1)] このグラフから分かること（入力特性、$V_{BE}-I_B$特性）についてまとめる
+	\item[(1)] $V_{BE}$を増加させていくと、$I_B$が急に大きく流れ始める。この時の$V_{BE}$は何Vか\\
+	\item[(2)] このグラフから分かること（入力特性、$V_{BE}-I_B$特性）について、言葉でまとめてみよう
 \end{enumerate}
 
 \newpage
@@ -372,9 +378,9 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 【結果の検討】
 
 \begin{enumerate}
-\item[(1)] 直流負荷線を2等分する点の$V_{CE}$と$I_C$をグラフから読み取る\\
-\item[(2)] 読み取った点の印をグラフ上に書き込む\\
-\item[(3)] このグラフから分かること（直流負荷線、$V_{CE}-I_C$特性）についてまとめる
+\item[(1)] 直流負荷線を2等分する点の$V_{CE}$と$I_C$をグラフから読み取れ\\
+\item[(2)] 読み取った点の印をグラフ上に書き込め\\
+\item[(3)] このグラフから分かること（直流負荷線、$V_{CE}-I_C$特性）について、言葉で表現してみよう
 \end{enumerate}
 
 %\vfill
@@ -384,7 +390,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
   \centering
    \includegraphics[keepaspectratio, scale=0.7, angle=90]
                {figs/eps/statictate.eps}
-               \caption{作図例：トランジスタの静特性（2SC1815Y）}
+               \caption{作図例：トランジスタの静特性（2SC1815Yの場合）}
                \label{fig:staticexample}
 \end{figure}
 
@@ -495,7 +501,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 \item[(1)] 表\ref{tbl1}の項番の1〜6を測定し記録する。（実習装置からTrは取り外し、電源装置も繋がない）
 \item[(2)] Trの名前を読み取って記録し、そのトランジスタについて調査したことをレポートに報告する
 \item[(3)] 抵抗器のカラーコードなどを読み取り、その抵抗器の公称値を調べ、実測値と比較する
-\item[(4)] ここでTrを実習装置にセットし、また直流電源装置を12Vに設定して実習装置に給電する
+\item[(4)] この後Trを実習装置にセットし、また直流電源装置を12Vに設定して実習装置に給電する
 \item[(5)] Trの3つの端子を使って、表\ref{tbl1}の項番7〜12の電圧を回路計で直接測定する
 \item[(6)] 設計時の条件や目標値と、実際に測定した値とを比較する
 \end{enumerate}
@@ -557,7 +563,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
   \end{tabular}
   \end{center}
 \end{table}
-\footnotetext{抵抗値の測定ではトランジスタを実習装置から取り外す}
+\footnotetext{抵抗値の測定ではトランジスタを実習装置から取り外すこと}
 \endgroup
 
 \vfill
@@ -574,15 +580,20 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 
 \subsection{入出力特性を測定する}
 
-入出力特性（オシロスコープで入力波形および出力波形を観察、記録する）
+入出力特性の測定と並行して、オシロスコープで入力波形および出力波形を観察、記録する
 
 \begin{enumerate}
 \item[(1)] 電源電圧を$E_C（V_{CC}）=12$Vとし、発振器の周波数を$1k$Hz 一定の正弦波とする
 \item[(2)] 入力電圧$V_i$を増加させ、その時の出力電圧$V_o$の値を記録する
-\item[(3)] 電圧増幅度（$A_V=V_o/V_i$）を計算する
-\item[(4)] 入出力特性（入力電圧ー出力電圧）をグラフに表す 
-\item[(5)] グラフの直線部分を直線のまま延伸し、実測値と離れる時の入力電圧を読み取る
-\item[(6)] その時の入力電圧の前後で、出力波形に歪みを生じ始めていることを確認する
+\end{enumerate}
+
+測定を終えたら、次の作業を行う
+
+\begin{enumerate}
+\item[(1)] 電圧増幅度（$A_V=V_o/V_i$）を計算する
+\item[(2)] 入出力特性（入力電圧ー出力電圧）をグラフに表す 
+\item[(3)] グラフの直線部分を直線のまま延伸し、実測値と離れる時の入力電圧を読み取る
+\item[(4)] その時の入力電圧の前後で、出力波形に歪みを生じ始めていることを確認する
 \end{enumerate}
 
 %\begin{spacing}{0.67}
@@ -599,7 +610,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 
  \begin{figure}[H]
     \centering
-     \includegraphics[keepaspectratio, scale=0.55, angle=0]
+     \includegraphics[keepaspectratio, scale=0.49, angle=0]
                  {figs/eps/iocharM1YExample.eps}
                  \caption{入出力特性のグラフ作成例}
                  \label{fig:iocharM1Yd}
@@ -773,15 +784,20 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 
 \subsection{周波数特性を測定する}
 
-周波数特性（オシロスコープで出力波形を観察、記録する）
+周波数特性の測定と並行して、オシロスコープで出力波形を観察、記録すること
 
 \begin{enumerate}
 \item[(1)] 電源電圧を$E_C（V_{CC}）=12$Vとし、入力電圧を$V_i=5m$V 一定の正弦波とする
 \item[(2)] 入力の周波数を変えて、その都度出力電圧$V_o$を記録する（$V_i=5m$V を一定を保つ）
-\item[(3)] 電圧増幅度$A_v=V_o/V_i$、および電圧利得$G_v[dB]=20\log A_v$を計算する
-\item[(4)] 周波数特性（周波数 - 電圧利得）を、周波数を横軸とする片対数グラフに表す
-\item[(5)] 中域周波数での電圧利得$G_{vA}$を読み取り、そこから$3$[dB]低下した増幅度$G_{vA}-3$を求める
-\item[(6)] 低域遮断周波数$f_L$[Hz]、高域遮断周波数$f_H$[Hz]、帯域幅$B$[dB]$＝f_H-f_L$をグラフから読み取る
+\end{enumerate}
+
+測定を終えたら次の作業を行う
+
+\begin{enumerate}
+\item[(1)] 電圧増幅度$A_v=V_o/V_i$、および電圧利得$G_v[dB]=20\log A_v$を計算する
+\item[(2)] 周波数特性（周波数 - 電圧利得）を、周波数を横軸とする片対数グラフに表す
+\item[(3)] 中域周波数での電圧利得$G_{vA}$を読み取り、そこから$3$[dB]低下した増幅度$G_{vA}-3$を求める
+\item[(4)] 低域遮断周波数$f_L$[Hz]、高域遮断周波数$f_H$[Hz]、帯域幅$B$[dB]$＝f_H-f_L$をグラフから読み取る
 \end{enumerate}
 
 %\begin{spacing}{0.67}
@@ -798,7 +814,7 @@ $V_{BE}\;-\;I_B$特性は入力特性とも呼ばれ、コレクタ-エミッタ
 
 \begin{figure}[H]
     \centering
-     \includegraphics[keepaspectratio, scale=0.55, angle=0]
+     \includegraphics[keepaspectratio, scale=0.48, angle=0]
                {figs/eps/freqcharM1YExample.eps}
                \caption{周波数特性のグラフ作成例}
                \label{fig:freqcharM1Yd}
